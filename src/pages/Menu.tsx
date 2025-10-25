@@ -149,12 +149,13 @@ const Menu = () => {
                   {category.items.map((item, itemIndex) => (
                     <Card
                       key={itemIndex}
-                      className="p-6 gradient-card shadow-soft hover:shadow-card transition-smooth"
+                      className="p-6 gradient-card shadow-soft hover-lift group relative overflow-hidden"
                     >
-                      <div className="flex justify-between items-start mb-3">
+                      <div className="absolute -right-6 -top-6 w-28 h-28 bg-primary/5 rounded-full transition-smooth group-hover:scale-150" />
+                      <div className="relative flex justify-between items-start mb-3">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
-                            <h3 className="text-xl font-semibold text-foreground">
+                            <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-smooth">
                               {item.name}
                             </h3>
                             {item.popular && (
@@ -163,13 +164,13 @@ const Menu = () => {
                               </Badge>
                             )}
                           </div>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-muted-foreground leading-relaxed">
                             {item.description}
                           </p>
                         </div>
                       </div>
-                      <div className="flex justify-end">
-                        <span className="text-lg font-semibold text-primary">
+                      <div className="relative flex justify-end mt-4">
+                        <span className="text-xl font-bold text-primary">
                           Rp {item.price}
                         </span>
                       </div>
