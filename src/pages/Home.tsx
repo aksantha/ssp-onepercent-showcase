@@ -15,6 +15,7 @@ import menuMatcha from "@/assets/menu-matcha.jpg";
 
 const Home = () => {
   const [selectedMenu, setSelectedMenu] = useState<any>(null);
+  const [showAllMenu, setShowAllMenu] = useState(false);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -231,7 +232,7 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {menuItems.map((item, index) => (
+            {(showAllMenu ? menuItems : menuItems.slice(0, 3)).map((item, index) => (
               <Card
                 key={index}
                 className="overflow-hidden gradient-card shadow-card hover-lift observe-scroll group cursor-pointer"
@@ -266,6 +267,19 @@ const Home = () => {
               </Card>
             ))}
           </div>
+
+          {!showAllMenu && menuItems.length > 3 && (
+            <div className="text-center mt-12">
+              <Button 
+                size="lg"
+                variant="outline"
+                className="bg-card/80 backdrop-blur-sm shadow-soft hover:shadow-card transition-smooth hover:scale-105"
+                onClick={() => setShowAllMenu(true)}
+              >
+                Lihat Lebih Banyak Menu
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
